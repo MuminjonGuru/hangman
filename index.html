@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+<!--
+Welcome screen
+Wheel of Fortune Music
+Picture of Pat Sajak moving around
+video in background on repeat with wheel spinning
+"Get Started!" button
+
+Rules Screen:
+- Spin the Wheel for a $ value - $100 through $1000
+  - penalties for wrong guess - Lose $25?
+  - Bonus: double or nothing?
+  - twice as many guesses as letters in word
+  - Once guesses run out, you can buy five more guess for $200
+  - words get more difficult as game goes on
+
+"Play the Game" button
+
+  - Screen showing # of blanks in word
+  - constructor allowing me to create new words - object containing words - object breaking down number of letters seperated into array or something
+    - function parsing word into letters
+    - Have a word bank and a button that pulls a random word for that level of difficulty?
+  - "Guess a letter" and input field for guess | takes only one value | no numbers | transform to lower-case
+  - display # of dashes on page load that are in first word or phrase?
+  -->
+
+  <h1 id="wordPhrase">- - -</h1>
+
+
+  <div class="wordDiv">
+    <p class="printWord"></p>
+  </div>
+  <!-- <div id="first"></div>
+    <h1 id="first__letter">_</h1>
+  <div id="second"></div>
+    <h1 id="second__letter">_</h1>
+  <div id="third"></div>
+    <h1 id="third__letter">_</h1>
+  <div id="fourth"></div>
+    <h1 id="fourth__letter">_</h1>
+  <div id="fifth"></div>
+    <h1 id="fifth__letter">_</h1>
+  <div id="sixth"></div>
+    <h1 id="sixth__letter">_</h1>
+  <div id="seventh"></div>
+    <h1 id="seventh__letter">_</h1>
+  <div id="eighth"></div>
+    <h1 id="eighth__letter">_</h1>
+  <div id="ninth"></div>
+    <h1 id="ninth__letter">_</h1> -->
+
+  <input id="checkLetter">
+  <!--
+  - submit - on.click calling inArray function
+  -->
+  <button onclick="checkLetter(letterToCheck)" type="button" name="button">Check Letter</button><br>
+  <button onclick="newWord(arr.join(''))">New Word</button><br>
+  <input id="addWordField"><br>
+  <button onclick="addWord()" type="button" name="button">Add Word</button><br>
+  <!--
+  - run inArray function to compare to the letters in the word
+  - if inArray, show letter. If not inArray, alert saying same.
+    - Points deduct from score.
+    - Guess again.
+  - enter another letter in input field.
+  - with each succesful completion of level, up to 10 levels, "array" increases by one. ++
+-->
+    <script src="script.js"></script>
+
+  </body>
+</html>
