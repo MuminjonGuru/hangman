@@ -7,25 +7,27 @@
     "yesterday"
   ]
 
-  // Now for the array.
-  // First split the word into individual letters.
+  // Create an array of letters.
+  // Split the word into individual letters.
   // Declare arr variable at global scope (above).
 
-    function splitWord(word) {
-      arr = [...word];
-      console.log(arr);
-      }
+  function splitWord(word) {
+    arr = [...word];
+    console.log(arr);
+    }
 
 
   var wordPhrase = $("#wordPhrase")[0];
   var arr;
   var printWord = $(".printWord")[0];
   var currentIndex = 0;
+  var spanIndex = 0;
+  var currentSpan;
+
 
   function newWord(arr) {
-    // wordPhrase.innerText = arr;
     for (var i = 0; i < arr.length; i++) {
-      printWord.innerHTML += ("<span id='letter" + currentIndex + "'>" + arr[i] + "</span>");
+      printWord.innerHTML += ("<span id='letter[" + currentIndex + "]'>" + arr[i] + "</span>");
       currentIndex++;
       $("span").hide();
     }
@@ -37,27 +39,45 @@
   letterToCheck = $("#checkLetter")[0].value;
 }
 
-// These are unnecessary
-  var firstLetter = $("#first__letter")[0];
-  var secondLetter = $("#second__letter")[0];
-  var thirdLetter = $("#third__letter")[0];
-  var fourthLetter = $("#fourth__letter")[0];
-  var fifthLetter = $("#fifth__letter")[0];
-  var sixthLetter = $("#sixth__letter")[0];
-  var seventhLetter = $("#seventh__letter")[0];
-  var eighthLetter = $("#eighth__letter")[0];
-  var ninthLetter = $("#ninth__letter")[0];
+  function showLetterToCheck() {
+    console.log(letterToCheck);
+  }
 
+  function showWord() {
+    $('span').show();
+  }
+
+  function hideWord() {
+    $('span').hide();
+  }
+
+  function setSpanIndex() {
+    spanIndex = 0;
+  }
+
+  function setCurrentSpanVar() {
+    currentSpan = $('span')[spanIndex];
+  }
 
   function checkLetter(letterToCheck) {
-    console.log(letterToCheck);
-    arr.forEach(function(letter) {
-    if (letterToCheck == letter) {
-      console.log("Yay!");
-
+      for (var i = 0; i < arr.length; i++) {
+      if (letterToCheck == arr[i]) {
+          // currentSpan.innerText = letterToCheck;
+          document.getElementById('letter[' + i + ']').style.display = "inline"
+          // spanIndex++;
+      } else {
+        console.log("No " + letterToCheck);
+      }
     }
-  });
-}
+  }
+
+  // If I do:
+  // var currentSpan = document.getElementById("letter[0]");
+  // Then currentSpan.innerText;
+  // I get "b"
+  // Wy can't I get the checkLetter(letterToCheck) function to work? scope thing, I think.
+
+
 
 
   // This will be for getting the next word to appear when you "level up". No button for this yet.

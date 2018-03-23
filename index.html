@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
@@ -60,8 +61,19 @@ Rules Screen:
   <!--
   - submit - on.click calling inArray function
   -->
+  <button onclick="splitWord(wordBank[0])">Split Word</button>
+  <button onclick="newWord(arr.join(''))">New Word</button>
+  <button onclick="setLetterToCheck()">Set Letter To Check</button>
+  <button onclick="showLetterToCheck()">Show Letter To Check</button>
+
+  <button onclick="showWord()">Show Word</button>
+  <button onclick="hideWord()">Hide Word</button>
+
+  <button onclick-"SetSpanIndex()">Set spanIndex</button>
+  <button onclick-"setCurrentSpanVar()">Set currentSpan</button>
+
   <button onclick="checkLetter(letterToCheck)" type="button" name="button">Check Letter</button><br>
-  <button onclick="newWord(arr.join(''))">New Word</button><br>
+
   <input id="addWordField"><br>
   <button onclick="addWord()" type="button" name="button">Add Word</button><br>
   <!--
