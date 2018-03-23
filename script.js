@@ -16,55 +16,61 @@
     console.log(arr);
     }
 
-
-  var wordPhrase = $("#wordPhrase")[0];
+  // set my variables
+  // var wordPhrase = $("#wordPhrase")[0];
   var arr;
-  var printWord = $(".printWord")[0];
+  var printWord1 = $(".printWord1")[0];
+  var printWord2 = $(".printWord2")[0];
   var currentIndex = 0;
-  var spanIndex = 0;
+  // var spanIndex = 0;
   var currentSpan;
+  var letterToCheck;
 
-
+  // newWord function to create new word and hide it.
   function newWord(arr) {
     for (var i = 0; i < arr.length; i++) {
-      printWord.innerHTML += ("<span id='letter[" + currentIndex + "]'>" + arr[i] + "</span>");
+      printWord1.innerHTML += ("<span id='letter[" + currentIndex + "]'>" + arr[i] + "</span>");
+      printWord1.innerHTML += ("<span id='dash[" + currentIndex + "]'>" + "-" + "</span>");
       currentIndex++;
-      $("span").hide();
+      // $("span").hide();
+      document.getElementById('letter[' + i + ']').style.display = "none"
     }
   }
 
-  var letterToCheck;
+  // assign the letter in input field to a variable called letterToCheck
   // If input field is blank, shouldn't be able to run "setLetterToCheck()" function.
   function setLetterToCheck() {
   letterToCheck = $("#checkLetter")[0].value;
 }
 
+  // test to see if letterToCheck has been set. Prints to console.
   function showLetterToCheck() {
     console.log(letterToCheck);
   }
 
+  // Show word in span tags
   function showWord() {
     $('span').show();
   }
 
+  // hide word in span tags
   function hideWord() {
     $('span').hide();
   }
 
-  function setSpanIndex() {
-    spanIndex = 0;
-  }
+  // function setSpanIndex() {
+  //   spanIndex = 0;
+  // }
 
-  function setCurrentSpanVar() {
-    currentSpan = $('span')[spanIndex];
-  }
+  // function setCurrentSpanVar() {
+  //   currentSpan = $('span')[spanIndex];
+  // }
 
   function checkLetter(letterToCheck) {
       for (var i = 0; i < arr.length; i++) {
       if (letterToCheck == arr[i]) {
-          // currentSpan.innerText = letterToCheck;
-          document.getElementById('letter[' + i + ']').style.display = "inline"
-          // spanIndex++;
+          document.getElementById('letter[' + i + ']').style.display = "inline";
+          document.getElementById('dash[' + i + ']').style.display = "none";
       } else {
         console.log("No " + letterToCheck);
       }
@@ -83,11 +89,11 @@
   // This will be for getting the next word to appear when you "level up". No button for this yet.
   function nextWord() {
       if (currentIndex < wordBank.length) {
-      wordPhrase.innerText = wordBank[currentIndex];
+      // wordPhrase.innerText = wordBank[currentIndex];
       currentIndex++;
     } else if (currentIndex == wordBank.length) {
         currentIndex = 0;
-        wordPhrase.innerText = wordBank[currentIndex];
+        // wordPhrase.innerText = wordBank[currentIndex];
 
       }
   }
