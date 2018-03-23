@@ -2,9 +2,9 @@
 // My word bank.
 
   var wordBank = [
-    "bumblebee",
-    "jacket",
-    "yesterday"
+    ["bumblebee", "buzz buzz"],
+    ["jacket", "baby it's cold outside"],
+    ["yesterday", "not today but"]
   ]
 
   // Create an array of letters.
@@ -16,11 +16,14 @@
     console.log(arr);
     }
 
+  function getHint(hint) {
+    document.getElementsByClassName('hint')[0].innerText = hint;
+  }
   // set my variables
   // var wordPhrase = $("#wordPhrase")[0];
   var arr;
   var printWord1 = $(".printWord1")[0];
-  var printWord2 = $(".printWord2")[0];
+  // var printWord2 = $(".printWord2")[0];
   var currentIndex = 0;
   // var spanIndex = 0;
   var currentSpan;
@@ -49,14 +52,15 @@
   }
 
   // Show word in span tags
-  function showWord() {
-    $('span').show();
-  }
+  function showWord(arr) {
+    // $('span').show();
+      document.getElementsByClassName('printWord1')[0].innerText = arr.join("");
+      }
 
   // hide word in span tags
-  function hideWord() {
+  function hideWord(arr) {
     $('span').hide();
-  }
+    }
 
   // function setSpanIndex() {
   //   spanIndex = 0;

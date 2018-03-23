@@ -3,8 +3,9 @@ span {
 }
 
 .wordDiv1 {
-  display: inline;
-  margin: 0 10px;
+  /* display: inline;
+  margin: 0 10px; */
+  height: 100px;
 }
 
 .wordDiv2 {
@@ -16,3 +17,11 @@ p {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 48px;
 }
+
+/* .printWord1 {
+  margin: 0;
+}
+
+.printWord2 {
+  margin: 0;
+} */
