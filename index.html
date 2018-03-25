@@ -42,18 +42,24 @@ Rules Screen:
   <div class="wordDiv1">
     <p class="hint"></p>
   </div>
+  <div class="incorrectGuess">
+    <p class="__incorrectGuess">test1</p>
+  </div>
+  <div class="correctGuess">
+    <p class="__correctGuess">test2</p>
+  </div>
   <!-- <div class="wordDiv2">
     <p class="printWord2"></p>
   </div> -->
 
 
-  <input id="checkLetter">
+  <input id="checkLetter" type="text" maxlength="1" size="1" oninput="setLetterToCheck()">
   <!--
   - submit - on.click calling inArray function
   -->
-  <button onclick="splitWord(wordBank[0][0])">Split Word</button>
-  <button onclick="newWord(arr.join(''))">New Word</button>
-  <button onclick="setLetterToCheck()">Set Letter To Check</button>
+  <button onclick="splitWord(wordBank[0][0]); newWord(arr.join(''))">Split Word / New Word</button>
+  <!-- <button onclick="newWord(arr.join(''))">New Word</button> -->
+  <button onclick="checkLetter(); compareLetterArrays(); setTimeout(addLetterChosen, 100)">Check Letter</button>
   <button onclick="showLetterToCheck()">Show Letter To Check</button>
 
   <button onclick="showWord(arr)">Show Word</button>
@@ -62,7 +68,7 @@ Rules Screen:
   <!-- <button onclick-"SetSpanIndex()">Set spanIndex</button> -->
   <!-- <button onclick-"setCurrentSpanVar()">Set currentSpan</button> -->
 
-  <button onclick="checkLetter(letterToCheck)" type="button" name="button">Check Letter</button><br>
+  <!-- <button onclick="checkLetter(letterToCheck)" type="button" name="button">Check Letter</button><br> -->
   <button onclick="getHint(wordBank[0][1])" type="button" name="button">Get Hint</button><br>
 
   <input id="addWordField"><br>

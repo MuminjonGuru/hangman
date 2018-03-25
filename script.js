@@ -1,4 +1,9 @@
 
+class Game {
+  constructor() {
+
+  }
+}
 // My word bank.
 
   var wordBank = [
@@ -20,14 +25,16 @@
     document.getElementsByClassName('hint')[0].innerText = hint;
   }
   // set my variables
-  // var wordPhrase = $("#wordPhrase")[0];
   var arr;
   var printWord1 = $(".printWord1")[0];
-  // var printWord2 = $(".printWord2")[0];
+  var __incorrectGuess = document.getElementsByClassName("__incorrectGuess")[0];
+  var correctGuess = document.getElementsByClassName("__correctGuess")[0];
   var currentIndex = 0;
-  // var spanIndex = 0;
   var currentSpan;
   var letterToCheck;
+  var chosenBank = [];
+  var input = document.getElementById('checkLetter');
+  var clickIndex = 0;
 
   // newWord function to create new word and hide it.
   function newWord(arr) {
@@ -40,11 +47,75 @@
     }
   }
 
-  // assign the letter in input field to a variable called letterToCheck
+  // assign the letter in input field to a variable called letterToCheck. This fires on event listener for input element.
   // If input field is blank, shouldn't be able to run "setLetterToCheck()" function.
   function setLetterToCheck() {
   letterToCheck = $("#checkLetter")[0].value;
 }
+
+  // To add the letter chosen to a new array to avoid choosing duplicate letters if user forgets what was chosen already.
+
+  // function addLetterChosen() {
+  //   chosenBank.push(input.value);
+  //   console.log(chosenBank);
+  // }
+
+  // function addLetterChosen() {
+  //   chosenBank.forEach(function() {
+  //     if (chosenBank == input.value) {
+  //       console.log(`do nothing`);
+  //     } else {
+  //       chosenBank.push(input.value);
+  //       console.log(chosenBank);
+  //     }
+  //   })
+  // }
+
+  function addLetterChosen() {
+    for (var i = -1; i < chosenBank.length; i++) {
+      if (clickIndex == 0 && input.value != chosenBank[i]) {
+        chosenBank.push(input.value);
+        console.log(chosenBank);
+        clickIndex++;
+        break;
+      } else if (clickIndex == 1 && input.value == chosenBank[i]) {
+        console.log(`do nothing`);
+        break;
+      }
+    }
+
+  }
+
+
+  //     if (input.value == chosenBank[i]) {
+  //       console.log(`do nothing`);
+  //       break;
+  //     } else if (input.value != chosenBank[i]) {
+  //       chosenBank.push(input.value);
+  //       console.log(chosenBank);
+  //     }
+  //   }
+  // }
+
+
+
+    // if the letterToCheck is not in arr, don't run. Else run?
+
+
+// The below is only working the first time.
+  function compareLetterArrays() {
+      chosenBank.forEach(function() {
+      if (input.value == chosenBank) {
+        alert(`${input.value} has already been chosen. Please choose again.`);
+    } else if (clickIndex = 0){
+      // creates error: chosenBank.push is not a function
+        chosenBank.push(input.value);
+
+        console.log(chosenBank);
+    }
+  });
+}
+
 
   // test to see if letterToCheck has been set. Prints to console.
   function showLetterToCheck() {
@@ -57,7 +128,7 @@
       document.getElementsByClassName('printWord1')[0].innerText = arr.join("");
       }
 
-  // hide word in span tags
+  // hide word in span tags - currently not working.
   function hideWord(arr) {
     $('span').hide();
     }
@@ -70,25 +141,18 @@
   //   currentSpan = $('span')[spanIndex];
   // }
 
-  function checkLetter(letterToCheck) {
+  function checkLetter() {
+      // __incorrectGuess.innerText = "";
       for (var i = 0; i < arr.length; i++) {
-      if (letterToCheck == arr[i]) {
-          document.getElementById('letter[' + i + ']').style.display = "inline";
-          document.getElementById('dash[' + i + ']').style.display = "none";
+      if (input.value == arr[i]) {
+        document.getElementById('letter[' + i + ']').style.display = "inline";
+        document.getElementById('dash[' + i + ']').style.display = "none";
+        correctGuess.innerText = `Correct!`
       } else {
-        console.log("No " + letterToCheck);
+        // __incorrectGuess.innerText = `Incorrect!`
       }
     }
   }
-
-  // If I do:
-  // var currentSpan = document.getElementById("letter[0]");
-  // Then currentSpan.innerText;
-  // I get "b"
-  // Wy can't I get the checkLetter(letterToCheck) function to work? scope thing, I think.
-
-
-
 
   // This will be for getting the next word to appear when you "level up". No button for this yet.
   function nextWord() {
@@ -111,11 +175,3 @@
   }
 
 // massage to make lower case? only take letters and spaces?
-
-// The below is what I used to log the key pressed to the screen. But I don't know if I want to use this. I think I'd rather use the input field.
-// document.addEventListener('keypress', (event) => {
-//   const keyName = event.key;
-//
-//   console.log(keyName);
-//   document.getElementById("changeHere").innerHTML = "The key you pressed is " + keyName + ".";
-// });
