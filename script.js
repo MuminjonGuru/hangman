@@ -1,13 +1,11 @@
-
-class Game {
-  constructor() {
-
+  function hideModal() {
+    document.getElementsByClassName('modalStart')[0] =
+    // I need to display = none;
   }
-}
 // My word bank.
 
   var wordBank = [
-    ["bumblebee", "buzz buzz"],
+    ["dog", "woof"],
     ["jacket", "baby it's cold outside"],
     ["yesterday", "not today but"]
   ]
@@ -21,13 +19,24 @@ class Game {
     console.log(arr);
     }
 
-  function getHint(hint) {
-    document.getElementsByClassName('hint')[0].innerText = hint;
+// This gives me the next word in the game.
+  function nextRound() {
+    next = wordBank[r][0];
+    arr = [...next];
+    console.log(arr);
+    chosenBank = [];
+    document.getElementsByClassName('hint')[0].innerText = "";
+    printWord1.innerHTML = "";
+    printWord1.innerHTML = "";
+    }
+
+  function getHint() {
+    document.getElementsByClassName('hint')[0].innerText = wordBank[r][1];
   }
   // set my variables
   var arr;
   var printWord1 = $(".printWord1")[0];
-  var __incorrectGuess = document.getElementsByClassName("__incorrectGuess")[0];
+  var incorrectGuess = document.getElementsByClassName("__incorrectGuess")[0];
   var correctGuess = document.getElementsByClassName("__correctGuess")[0];
   var currentIndex = 0;
   var currentSpan;
@@ -35,9 +44,17 @@ class Game {
   var chosenBank = [];
   var input = document.getElementById('checkLetter');
   var clickIndex = 0;
-
+  var x = false;
+  var y = false;
+  var z = false;
+  var r = 0;
+  var s = 0;
+  var next;
   // newWord function to create new word and hide it.
   function newWord(arr) {
+    currentIndex = 0;
+    printWord1.innerHTML = "";
+    printWord1.innerHTML = "";
     for (var i = 0; i < arr.length; i++) {
       printWord1.innerHTML += ("<span id='letter[" + currentIndex + "]'>" + arr[i] + "</span>");
       printWord1.innerHTML += ("<span id='dash[" + currentIndex + "]'>" + "-" + "</span>");
@@ -55,67 +72,37 @@ class Game {
 
   // To add the letter chosen to a new array to avoid choosing duplicate letters if user forgets what was chosen already.
 
-  // function addLetterChosen() {
-  //   chosenBank.push(input.value);
-  //   console.log(chosenBank);
-  // }
-
-  // function addLetterChosen() {
-  //   chosenBank.forEach(function() {
-  //     if (chosenBank == input.value) {
-  //       console.log(`do nothing`);
-  //     } else {
-  //       chosenBank.push(input.value);
-  //       console.log(chosenBank);
-  //     }
-  //   })
-  // }
-
   function addLetterChosen() {
-    for (var i = -1; i < chosenBank.length; i++) {
-      if (clickIndex == 0 && input.value != chosenBank[i]) {
-        chosenBank.push(input.value);
-        console.log(chosenBank);
-        clickIndex++;
-        break;
-      } else if (clickIndex == 1 && input.value == chosenBank[i]) {
-        console.log(`do nothing`);
-        break;
-      }
-    }
-
+    chosenBank.push(input.value);
+    console.log(chosenBank);
   }
 
-
-  //     if (input.value == chosenBank[i]) {
-  //       console.log(`do nothing`);
-  //       break;
-  //     } else if (input.value != chosenBank[i]) {
-  //       chosenBank.push(input.value);
-  //       console.log(chosenBank);
-  //     }
-  //   }
-  // }
-
-
-
-    // if the letterToCheck is not in arr, don't run. Else run?
-
-
-// The below is only working the first time.
   function compareLetterArrays() {
-      chosenBank.forEach(function() {
-      if (input.value == chosenBank) {
-        alert(`${input.value} has already been chosen. Please choose again.`);
-    } else if (clickIndex = 0){
-      // creates error: chosenBank.push is not a function
-        chosenBank.push(input.value);
-
-        console.log(chosenBank);
+      y = false;
+      for (var i = 0; i < chosenBank.length; i++) {
+      if (input.value == chosenBank[i]) {
+        y = true;
+      }
+    } if (y === true) {
+      alert(`${input.value} has already been chosen. Please choose again.`);
+    } else if (y === false) {
+      console.log("test false");
     }
-  });
-}
+  }
 
+  // function to compare values in each array and determine if every value in chosenBank array matches at least one value in arr array.
+  function winRound() {
+    var isSuperset = arr.every(function(val) {
+      return chosenBank.indexOf(val) >= 0;
+    });
+    if (isSuperset === true) {
+      alert("You just won the round!");
+      r++;
+      s++;
+    } if (r == wordBank.length) {
+      alert("you just won the game!");
+    }
+  }
 
   // test to see if letterToCheck has been set. Prints to console.
   function showLetterToCheck() {
@@ -133,26 +120,25 @@ class Game {
     $('span').hide();
     }
 
-  // function setSpanIndex() {
-  //   spanIndex = 0;
-  // }
-
-  // function setCurrentSpanVar() {
-  //   currentSpan = $('span')[spanIndex];
-  // }
-
   function checkLetter() {
       // __incorrectGuess.innerText = "";
+      x = false;
       for (var i = 0; i < arr.length; i++) {
       if (input.value == arr[i]) {
         document.getElementById('letter[' + i + ']').style.display = "inline";
         document.getElementById('dash[' + i + ']').style.display = "none";
-        correctGuess.innerText = `Correct!`
-      } else {
-        // __incorrectGuess.innerText = `Incorrect!`
+        x = true;
+      } else if (input.value != arr[i]) {
+        console.log("false");
       }
     }
+    if (x === true) {
+      correctGuess.innerText = `Correct!`
+    } else if (x === false) {
+      incorrectGuess.innerText = `Incorrect!`
+    }
   }
+
 
   // This will be for getting the next word to appear when you "level up". No button for this yet.
   function nextWord() {
@@ -167,7 +153,6 @@ class Game {
   }
 
   // Then I want to hide the word.
-
   function addWord () {
     let string = $("#addWordField")[0].value;
     wordBank.push(string);

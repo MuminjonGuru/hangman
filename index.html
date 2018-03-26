@@ -8,33 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-<!--
-Welcome screen
-Wheel of Fortune Music
-Picture of Pat Sajak moving around
-video in background on repeat with wheel spinning
-"Get Started!" button
 
-Rules Screen:
-- Spin the Wheel for a $ value - $100 through $1000
-  - penalties for wrong guess - Lose $25?
-  - Bonus: double or nothing?
-  - twice as many guesses as letters in word
-  - Once guesses run out, you can buy five more guess for $200
-  - words get more difficult as game goes on
-
-"Play the Game" button
-
-  - Screen showing # of blanks in word
-  - constructor allowing me to create new words - object containing words - object breaking down number of letters seperated into array or something
-    - function parsing word into letters
-    - Have a word bank and a button that pulls a random word for that level of difficulty?
-  - "Guess a letter" and input field for guess | takes only one value | no numbers | transform to lower-case
-  - display # of dashes on page load that are in first word or phrase?
-  -->
-
-  <!-- <h1 id="wordPhrase">- - -</h1> -->
-
+  <div class="modalStart">
+    <p class="modalStyle">
+      <button onclick="hideModal" class="startButton">S T A R T</button>
+    </p>
+  </div>
 
   <div class="wordDiv1">
     <p class="printWord1"></p>
@@ -43,44 +22,22 @@ Rules Screen:
     <p class="hint"></p>
   </div>
   <div class="incorrectGuess">
-    <p class="__incorrectGuess">test1</p>
+    <p class="__incorrectGuess __correctGuess">- - -</p>
   </div>
-  <div class="correctGuess">
-    <p class="__correctGuess">test2</p>
-  </div>
-  <!-- <div class="wordDiv2">
-    <p class="printWord2"></p>
-  </div> -->
-
 
   <input id="checkLetter" type="text" maxlength="1" size="1" oninput="setLetterToCheck()">
-  <!--
-  - submit - on.click calling inArray function
-  -->
-  <button onclick="splitWord(wordBank[0][0]); newWord(arr.join(''))">Split Word / New Word</button>
+
+  <button onclick="checkLetter(); compareLetterArrays(); setTimeout(addLetterChosen, 25); setTimeout(winRound, 50)">Check Letter</button>
+  <button onclick="splitWord(wordBank[0][0]); setTimeout(newWord(arr.join('')), 50)">Start</button>
+  <button onclick="newWord(arr)">Next Round</button>
   <!-- <button onclick="newWord(arr.join(''))">New Word</button> -->
-  <button onclick="checkLetter(); compareLetterArrays(); setTimeout(addLetterChosen, 100)">Check Letter</button>
+
   <button onclick="showLetterToCheck()">Show Letter To Check</button>
-
-  <button onclick="showWord(arr)">Show Word</button>
-  <button onclick="hideWord(arr)">Hide Word</button>
-
-  <!-- <button onclick-"SetSpanIndex()">Set spanIndex</button> -->
-  <!-- <button onclick-"setCurrentSpanVar()">Set currentSpan</button> -->
-
-  <!-- <button onclick="checkLetter(letterToCheck)" type="button" name="button">Check Letter</button><br> -->
-  <button onclick="getHint(wordBank[0][1])" type="button" name="button">Get Hint</button><br>
+  <button onclick="getHint()">Get Hint</button><br>
 
   <input id="addWordField"><br>
   <button onclick="addWord()" type="button" name="button">Add Word</button><br>
-  <!--
-  - run inArray function to compare to the letters in the word
-  - if inArray, show letter. If not inArray, alert saying same.
-    - Points deduct from score.
-    - Guess again.
-  - enter another letter in input field.
-  - with each succesful completion of level, up to 10 levels, "array" increases by one. ++
--->
+
     <script src="script.js"></script>
 
   </body>
