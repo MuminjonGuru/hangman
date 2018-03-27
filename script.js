@@ -1,13 +1,22 @@
   function hideModal() {
-    document.getElementsByClassName('modalStart')[0] =
-    // I need to display = none;
+    document.getElementsByClassName("modalStart")[0].style.display = "none";
   }
-// My word bank.
 
+// Should I try to figure out a way to display the letters chosen? I'd need to remove duplicates from the array.
+
+// function uniq(chosenBank) {
+//     var seen = {};
+//     return chosenBank.filter(function(item) {
+//         return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+//     });
+// }
+
+// My word bank.
   var wordBank = [
     ["dog", "woof"],
     ["jacket", "baby it's cold outside"],
-    ["yesterday", "not today but"]
+    ["yesterday", "not today or tomorrow but.."],
+    ["reading", "bad for your eyes, good for your mind"]
   ]
 
   // Create an array of letters.
@@ -19,6 +28,39 @@
     console.log(arr);
     }
 
+// Show rules of the game.
+  function showRules() {
+    document.getElementsByClassName("rulesDiv")[0].style.display = "block"
+  }
+
+  function closeRules() {
+    document.getElementsByClassName("rulesDiv")[0].style.display = "none";
+  }
+
+  function hideNextRound() {
+    document.getElementsByClassName("hideNextRound")[0].style.display = "none";
+  }
+
+  function showNextRound() {
+    document.getElementsByClassName("hideNextRound")[0].style.display = "inline-block";
+  }
+
+  function hideHint() {
+    document.getElementsByClassName("hint")[0].style.display = "none";
+  }
+
+  function hideGuess() {
+    document.getElementsByClassName("__correctGuess")[0].style.display = "none";
+  }
+
+  function showGuess() {
+    document.getElementsByClassName("__correctGuess")[0].style.display = "block";
+  }
+
+  function clearInput () {
+    input.value = "";
+  }
+
 // This gives me the next word in the game.
   function nextRound() {
     next = wordBank[r][0];
@@ -28,6 +70,7 @@
     document.getElementsByClassName('hint')[0].innerText = "";
     printWord1.innerHTML = "";
     printWord1.innerHTML = "";
+    document.getElementsByClassName("hideNextRound")[0].style.display = "inline-block";
     }
 
   function getHint() {
@@ -99,6 +142,9 @@
       alert("You just won the round!");
       r++;
       s++;
+      nextRound();
+      hideGuess();
+      clearInput();
     } if (r == wordBank.length) {
       alert("you just won the game!");
     }
