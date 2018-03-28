@@ -2,10 +2,18 @@ span {
 
 }
 
+.printWord1 {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 60px;
+  text-align: center;
+}
+
 .wordDiv1 {
   /* display: inline;
   margin: 0 10px; */
-  height: 100px;
+  height: 50px;
+  text-align: center;
 }
 
 .wordDiv2 {
@@ -13,6 +21,19 @@ span {
   margin: 0 10px;
 }
 
+input {
+  padding: 40px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 63px;
+  border-style: double;
+  border-radius: 8%;
+  box-shadow: 4px 10px 10px 2px #888;
+  text-align: center;
+}
+
+.inputDiv {
+  text-align: center;
+}
 p {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 22px;
@@ -31,17 +52,27 @@ p {
   left: 25%;
   right: 25%;
   box-shadow: 10px 10px 10px #888;
+  text-align: center;
+  border-radius: 10%;
+  width: 300px;
 }
 
 .rulesDiv {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 22px;
+  font-size: 16px;
   position: absolute;
   background-color: white;
   left: 60%;
   border-style: dotted;
   display: none;
   box-shadow: 28px 40px 26px 42px #888;
+  border-radius: 3% 0% 0% 3%;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .closeRulesDiv {
@@ -66,14 +97,42 @@ p {
 .hideNextRound {
   display: none;
 }
+
+.nextRoundDiv {
+  border-style: dotted;
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  box-shadow: 10px 10px 10px #888;
+  padding: 50px;
+  border-radius: 8%;
+}
+
+.newWordButton {
+  display: flex;
+}
+
 button {
   font-family: 'IBM Plex Mono', monospace;
-
+  font-size: 16px;
+  padding: 10px 10px 10px 10px;
+  margin: 0 auto;
+  border-radius: 5%;
+  box-shadow: 10px 10px 10px #888;
 }
-/* .printWord1 {
-  margin: 0;
+
+.guesses {
+  text-align: center;
 }
 
-.printWord2 {
+.enterGuess {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 32px;
+  text-align: center;
+}
+
+/* .printWord2 {
   margin: 0;
 } */

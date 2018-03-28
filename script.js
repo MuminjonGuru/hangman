@@ -15,9 +15,9 @@
   var wordBank = [
     ["dog", "woof"],
     ["jacket", "baby it's cold outside"],
-    ["yesterday", "not today or tomorrow but.."],
-    ["reading", "bad for your eyes, good for your mind"]
+    ["yesterday", "not today or tomorrow but.."]
   ]
+  // ["reading", "bad for your eyes, good for your mind"]
 
   // Create an array of letters.
   // Split the word into individual letters.
@@ -61,17 +61,9 @@
     input.value = "";
   }
 
-// This gives me the next word in the game.
-  function nextRound() {
-    next = wordBank[r][0];
-    arr = [...next];
-    console.log(arr);
-    chosenBank = [];
-    document.getElementsByClassName('hint')[0].innerText = "";
-    printWord1.innerHTML = "";
-    printWord1.innerHTML = "";
-    document.getElementsByClassName("hideNextRound")[0].style.display = "inline-block";
-    }
+  // function showBackground() {
+  //   document.getElementsByClassName("hideBackground")[0].style.display = "inline-block";
+  // }
 
   function getHint() {
     document.getElementsByClassName('hint')[0].innerText = wordBank[r][1];
@@ -93,6 +85,7 @@
   var r = 0;
   var s = 0;
   var next;
+
   // newWord function to create new word and hide it.
   function newWord(arr) {
     currentIndex = 0;
@@ -138,17 +131,34 @@
     var isSuperset = arr.every(function(val) {
       return chosenBank.indexOf(val) >= 0;
     });
-    if (isSuperset === true) {
+    if (isSuperset === true && r < wordBank.length) {
       alert("You just won the round!");
       r++;
-      s++;
       nextRound();
       hideGuess();
       clearInput();
-    } if (r == wordBank.length) {
-      alert("you just won the game!");
+    // } else if (isSuperset === true && r == wordBank.length) {
+      // alert("you just won the game!");
     }
   }
+
+  // This gives me the next word in the game.
+    function nextRound() {
+      if (r < wordBank.length) {
+        next = wordBank[r][0];
+        arr = [...next];
+        console.log(arr);
+        chosenBank = [];
+        document.getElementsByClassName('hint')[0].innerText = "";
+        printWord1.innerHTML = "";
+        printWord1.innerHTML = "";
+        document.getElementsByClassName("hideNextRound")[0].style.display = "inline-block";
+      }
+      else if (r == wordBank.length) {
+        alert("you just won the game!");
+      }
+
+    }
 
   // test to see if letterToCheck has been set. Prints to console.
   function showLetterToCheck() {
@@ -157,7 +167,6 @@
 
   // Show word in span tags
   function showWord(arr) {
-    // $('span').show();
       document.getElementsByClassName('printWord1')[0].innerText = arr.join("");
       }
 
@@ -185,8 +194,8 @@
     }
   }
 
-
   // This will be for getting the next word to appear when you "level up". No button for this yet.
+  // Not currently in operation at the moment:
   function nextWord() {
       if (currentIndex < wordBank.length) {
       // wordPhrase.innerText = wordBank[currentIndex];

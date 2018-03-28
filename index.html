@@ -8,16 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-
-  <div class="modalStart">
-    <p class="modalStyle">
-      Welcome to HangMan 3.0!
-    </p>
-    <p class="modalStyle">
-      Are you ready for the time of your life?
-      <button onclick="hideModal(); splitWord(wordBank[0][0]); setTimeout(newWord(arr.join('')), 50); showRules()" class="startButton">Yes, I'm ready to rumble!</button>
-    </p>
-  </div>
+<div class="">
 
   <div class="rulesDiv">
     <p class="rulesPara">
@@ -29,7 +20,7 @@
         <li>If your guess is correct, your letter will appear in it's proper place and you'll see "Correct!"</li>
         <li>If your guess is incorrect you'll see "Incorrect!"</li>
         <li>Enter another guess</li>
-        <li>After three incorrect guesses the round (should) reset</li>
+        <!-- <li>After three incorrect guesses the round (should) reset</li> -->
         <li>After you guess all the letters, click "Next Round!"</li>
       </ul>
     </p>
@@ -46,21 +37,35 @@
     <p class="hint"></p>
   </div>
 
-  <input id="checkLetter" type="text" maxlength="1" size="1" oninput="setLetterToCheck(); hideGuess()">
-
-  <button onclick="checkLetter(); compareLetterArrays(); setTimeout(addLetterChosen, 25); setTimeout(winRound, 50); showGuess()">Check Letter</button>
-  <!-- <button onclick="splitWord(wordBank[0][0]); setTimeout(newWord(arr.join('')), 50)">Start</button> -->
-  <button onclick="newWord(arr); hideNextRound()" class="hideNextRound">Next Round</button>
-  <!-- <button onclick="newWord(arr.join(''))">New Word</button> -->
-
-  <!-- <button onclick="showLetterToCheck()">Show Letter To Check</button> -->
-  <button onclick="getHint()">Get Hint</button><br>
-  <button onclick="showRules()">Show Rules</button>
-
-  <div class="guesses">
-    <p class="__incorrectGuess __correctGuess">- - -</p>
+  <div class="inputDiv">
+    <p class="enterGuess">Enter Your Guess:</p>
+    <input id="checkLetter" type="text" maxlength="1" size="1" oninput="setLetterToCheck(); hideGuess()">
   </div>
 
+  <div class="buttonDiv">
+    <button onclick="getHint()">Get Hint</button>
+    <button onclick="checkLetter(); compareLetterArrays(); setTimeout(addLetterChosen, 25); setTimeout(winRound, 50); showGuess()">Check Letter</button>
+    <button onclick="showRules()">Show Rules</button>
+  </div>
+
+  <div class="guesses">
+    <p class="__incorrectGuess __correctGuess"></p>
+  </div>
+</div>
+
+<div class="modalStart">
+  <p class="modalStyle">
+    Welcome to HangMan 3.0!
+  </p>
+  <p class="modalStyle">
+    Are you ready for the time of your life?
+    <br><button onclick="hideModal(); splitWord(wordBank[0][0]); setTimeout(newWord(arr.join('')), 50); showRules()" class="startButton">Yes, I'm ready to rumble!</button>
+  </p>
+</div>
+
+<div class="nextRoundDiv hideNextRound">
+  <button class="newWordButton" onclick="newWord(arr); hideNextRound()">Next Round</button>
+</div>
   <!-- <input id="addWordField"><br> -->
   <!-- <button onclick="addWord()" type="button" name="button">Add Word</button><br> -->
 
