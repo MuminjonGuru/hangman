@@ -15,7 +15,7 @@
   var wordBank = [
     ["dog", "woof"],
     ["jacket", "baby it's cold outside"],
-    ["yesterday", "not today or tomorrow but.."]
+    ["yesterday", "not today or tomorrow but..."]
   ]
   // ["reading", "bad for your eyes, good for your mind"]
 
@@ -25,7 +25,7 @@
 
   function splitWord(word) {
     arr = [...word];
-    console.log(arr);
+    // console.log(arr);
     }
 
 // Show rules of the game.
@@ -110,7 +110,7 @@
 
   function addLetterChosen() {
     chosenBank.push(input.value);
-    console.log(chosenBank);
+    // console.log(chosenBank);
   }
 
   function compareLetterArrays() {
@@ -122,7 +122,7 @@
     } if (y === true) {
       alert(`${input.value} has already been chosen. Please choose again.`);
     } else if (y === false) {
-      console.log("test false");
+      // console.log("test false");
     }
   }
 
@@ -147,7 +147,7 @@
       if (r < wordBank.length) {
         next = wordBank[r][0];
         arr = [...next];
-        console.log(arr);
+        // console.log(arr);
         chosenBank = [];
         document.getElementsByClassName('hint')[0].innerText = "";
         printWord1.innerHTML = "";
@@ -162,7 +162,7 @@
 
   // test to see if letterToCheck has been set. Prints to console.
   function showLetterToCheck() {
-    console.log(letterToCheck);
+    // console.log(letterToCheck);
   }
 
   // Show word in span tags
@@ -184,7 +184,7 @@
         document.getElementById('dash[' + i + ']').style.display = "none";
         x = true;
       } else if (input.value != arr[i]) {
-        console.log("false");
+        // console.log("false");
       }
     }
     if (x === true) {
@@ -211,7 +211,7 @@
   function addWord () {
     let string = $("#addWordField")[0].value;
     wordBank.push(string);
-    console.log(wordBank);
+    // console.log(wordBank);
   }
 
 // massage to make lower case? only take letters and spaces?
